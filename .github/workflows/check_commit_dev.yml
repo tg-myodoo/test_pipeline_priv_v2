@@ -25,7 +25,8 @@ jobs:
       - uses: actions/checkout@v2
       - name: Check if commit exists on another branch
         run: |
-          if git merge-base --is-ancestor ${{ github.sha }} origin/dev_stage; then
+          if git merge-base --fork-point origin/dev_stage ${{ github.sha }}; then
+          # if git merge-base --is-ancestor ${{ github.sha }} origin/dev_stage; then
             echo "Commit exists on dev_stage"
           else
             echo "Commit NOT on dev_stage"
