@@ -1,0 +1,33 @@
+name: Check Commit
+run-name: ${{ github.ref_name }} check for ${{ github.event.pull_request.title }}
+
+on:
+  pull_request:
+    types:
+      - opened
+
+jobs:
+  check-commit:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "github.event.pull_request.statuses_url > ${{ github.event.pull_request.statuses_url }}"
+      - run: echo "github.event.pull_request.html_url > ${{ github.event.pull_request.html_url }}"
+      - run: echo "github.event.pull_request.commits_url > ${{ github.event.pull_request.commits_url }}"
+      - run: echo "github.event.pull_request.commits > ${{ github.event.pull_request.commits }}"
+      - run: echo "github.event.pull_request.title > ${{ github.event.pull_request.title }}"
+      - run: echo "toJSON(github.event) > ${{ toJSON(github.event) }}"
+      - run: echo "github.ref_name > ${{ github.ref_name }}"
+      - run: echo "github.ref > ${{ github.ref }}"
+      - run: echo "GITHUB_REF > $GITHUB_REF"
+      - run: echo "GITHUB_HEAD_REF > $GITHUB_HEAD_REF"
+      - run: echo "toJSON(github) > ${{ toJSON(github) }}"
+      
+      - uses: actions/checkout@v2
+      - name: Check if commit exists on another branch
+        run: |
+          if git merge-base --is-ancestor ${{ github.sha }} origin/dev_stage; then
+            echo "Commit exists on dev_stage"
+          else
+            echo "Commit NOT on dev_stage"
+            exit 1
+          fi
