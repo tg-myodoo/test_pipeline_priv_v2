@@ -37,4 +37,10 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r ./.github/workflows/requirements.txt
       - name: Execute script
+        env:
+          FAKE_TOKEN: ${{ secrets.FAKE_TOKEN }}
+          THE_GITHUB_TOKEN: ${{ secrets.THE_GITHUB_TOKEN }}
+          URL_PULL: ${{ github.event.pull_request.commits_url }}
+          REPOSITORY: ${{ github.repository }}
+          COMPARASION_BASE: "dev_stage"
         run: python ./.github/workflows/script_check_versions.py
