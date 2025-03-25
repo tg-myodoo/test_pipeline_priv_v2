@@ -1,5 +1,5 @@
 name: Check Versions
-run-name: ${{ github.ref_name }} check versions for ${{ github.event.pull_request.title }}
+run-name: Run ${{ github.base_ref }} check versions for ${{ github.event.pull_request.title }}
 
 on:
   pull_request:
@@ -37,4 +37,4 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r ./.github/workflows/requirements.txt
       - name: Execute script
-        run: python script_check_versions.py
+        run: python ./.github/workflows/script_check_versions.py
