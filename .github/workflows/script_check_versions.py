@@ -14,3 +14,5 @@ print(FAKE_TOKEN)
 print(URL_PULL)
 print(REPOSITORY)
 print(COMPARASION_BASE)
+
+print(os.listdir("/"))
