@@ -16,9 +16,14 @@ print(FAKE_TOKEN)
 print(URL_PULL)
 print(REPOSITORY)
 print(COMPARASION_BASE)
+print(GITHUB_WORKSPACE)
 
-print("_", os.listdir("/"))
-# ['home', 'sys', 'lib64', 'proc', 'dev', 'lib', 'var', 'etc', 'srv', 'root', 'boot', 'run', 'opt', 'snap', 'mnt', 
-# 'imagegeneration', 'usr', 'media', 'sbin.usr-is-merged', 'lib.usr-is-merged', 'tmp', 'lib32', 'bin.usr-is-merged', 'data', 'sbin', 'bin', 'lost+found']
 print("GITHUB_WORKSPACE", os.listdir(GITHUB_WORKSPACE))
+
+with open(GITHUB_WORKSPACE+"/mod1.py", 'r') as file:
+      # Read the content of the file
+      file_content = file.read()
+      
+      # Print the content
+      print(file_content)
 
