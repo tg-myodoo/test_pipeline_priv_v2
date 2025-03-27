@@ -6,7 +6,8 @@ on:
     types:
       - opened
     branches:
-      - dev_stage
+      - main
+      - master
       - client_stage 
       
 jobs:
@@ -30,5 +31,4 @@ jobs:
           PULL_REQUEST_URL: ${{ github.event.pull_request.commits_url }}
           PULL_REQUEST_TARGET: ${{ github.base_ref }}
           REPOSITORY: ${{ github.repository }}
-          GITHUB_WORKSPACE: ${{ GITHUB_WORKSPACE }}
         run: python ./.github/workflows/check_module_versions.py
