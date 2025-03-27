@@ -78,7 +78,7 @@ def get_modules_list_by_sha(sha: str) -> list:
     return modules_list
 
 def get_modules_list_by_workspace() -> list:
-    return [f.name for f in os.scandir(GITHUB_WORKSPACE) if f.is_dir()]
+    return [f.name for f in os.scandir(GITHUB_WORKSPACE) if f.is_dir() and f.name not in ['.git', '.github']]
 
 def get_module_version(manifest_url: str) -> str:
     """
