@@ -1,4 +1,4 @@
-name: Check Versions
+name: Check Versions ${{ github.base_ref }}
 run-name: Run ${{ github.base_ref }} check versions for ${{ github.event.pull_request.title }}
 
 on:
